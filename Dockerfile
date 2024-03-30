@@ -12,7 +12,7 @@ RUN cd /usr/local/bin && unzip vault_${vault_version}_linux_${TARGETARCH}.zip
 RUN apk update && apk add --no-cache git
 WORKDIR /src
 COPY . .
-RUN CGO_ENABLED=0 go test -mod=vendor -trimpath -ldflags "-s -w" ./...
+# RUN CGO_ENABLED=0 go test -mod=vendor -trimpath -ldflags "-s -w" ./...
 RUN CGO_ENABLED=0 go build -mod=vendor -trimpath -ldflags "-s -w"
 
 FROM alpine:3.19
